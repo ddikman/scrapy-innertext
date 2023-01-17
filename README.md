@@ -72,3 +72,5 @@ Will be rendered as `This div contains complex text\n\nList item 1\nList item 2\
 ## Testing
 
 Run `pipenv run python test.py` which will create a tiny server hosting the `test.html` and then call `scrapy crawl test` to run the crawler on this file.
+
+It will also finish by outputting the example texts parsed.
