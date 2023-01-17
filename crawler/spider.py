@@ -15,6 +15,7 @@ class TestSpider(scrapy.Spider):
             'table': dict(zip(labels, values)),
             'complexText': {
                 'innertext_quick': innertext_quick(response.css('#complex-text')),
+                'innertext_quick_delimited': innertext_quick(response.css('#complex-text'), delimiter=' '),
                 'innertext': innertext(response.css('#complex-text'))
             }
         }
