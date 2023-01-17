@@ -1,5 +1,5 @@
 import scrapy
-from crawler.innertext import innertext
+from crawler.innertext import innertext, innertext_quick
 
 class TestSpider(scrapy.Spider):
     name = 'test'
@@ -9,6 +9,9 @@ class TestSpider(scrapy.Spider):
     }
 
     def parse(self, response):
-        labels = innertext(response.css('#header-column th'))
-        values = innertext(response.css('#header-column td'))
-        yield dict(zip(labels, values))
+        labels = innertext_quick(response.css('#header-column th'))
+        values = innertext_quick(response.css('#header-column td'))
+        yield {
+            'table': dict(zip(labels, values)),
+            'complexText': innertext(response.css('#complex-text')),
+        }
