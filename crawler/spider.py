@@ -13,5 +13,8 @@ class TestSpider(scrapy.Spider):
         values = innertext_quick(response.css('#header-column td'))
         yield {
             'table': dict(zip(labels, values)),
-            'complexText': innertext(response.css('#complex-text')),
+            'complexText': {
+                'innertext_quick': innertext_quick(response.css('#complex-text')),
+                'innertext': innertext(response.css('#complex-text'))
+            }
         }
